@@ -4,24 +4,37 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+	.nbar-link li{
+		display: inline;
+		float: right;
+		padding: 0px 5px 0px 5px;
+		margin-top:-29.95px;
+	}
+    </style>
   </head>
   <body>
+
   <nav class='navbar navbar-default navbar-static-top'>
-    <div class="container">
+  <div class="container" style= "display:inline">
       <ul class="nav navbar-nav">
-
-        <li><a class="navbar-brand" href="{% url 'index' %}">DJANGO</a></li>
-        <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
-        <li><a class="navbar-link" href="{% url 'basic_app:register' %}">Register</a></li>
-        {% if user.is_authenticated %}
-        <li><a class="navbar-link" href="{% url 'logout' %}">Logout</a></li>
-        {% else %}
-
-        <li><a class="navbar-link" href="{% url 'basic_app:user_Login' %}">LogIn</a></li>
-        {% endif %}
+	<div class="navbar-brand">
+        	<li style="margin-top:10px"><a href="{% url 'index' %}">DJANGO</a></li>
+		<div class="nbar-link"> 
+        		<li><a href="{% url 'admin:index' %}">Admin</a></li>
+        		<li><a class="nbar-link" href="{% url 'basic_app:register' %}">Register</a></li>
+        		{% if user.is_authenticated %}
+	        	<li><a class="nbar-link" href="{% url 'logout' %}">Logout</a></li>
+        		{% else %}
+			<li><a class="navbar-link" href="{% url 'basic_app:user_Login' %}">LogIn</a></li>
+	        	{% endif %}
+		</div>
+	</div> 
+	
       </ul>
-      </div>
-  </nav>
+   </div>
+  </nav>  
+
   <div class="container">
     {% block body_block %}
     {% endblock %}
